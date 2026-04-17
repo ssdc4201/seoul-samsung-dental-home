@@ -1,0 +1,52 @@
+baseURL = "https://seoul-samsung-dental.com/"
+languageCode = "ko-kr"
+title = "Seoul Samsung Dental Clinic"
+enableRobotsTXT = true
+
+[params]
+  clinic_name = "서울삼성치과의원"
+  phone = ""
+  site_description = "정확한 진단과 편안한 진료를 제공하는 서울삼성치과"
+  og_image = "/images/og-default.jpg"
+  naver_booking_url = ""
+  naver_blog_url = ""
+
+[menu]
+  [[menu.main]]
+    name = "치과소개"
+    url = "/about/"
+    weight = 10
+  [[menu.main]]
+    name = "보존/일반치료"
+    url = "/conservative/"
+    weight = 20
+  [[menu.main]]
+    name = "보철/심미치료"
+    url = "/prosthetic/"
+    weight = 30
+  [[menu.main]]
+    name = "임플란트/사랑니"
+    url = "/implant/"
+    weight = 40
+  [[menu.main]]
+    name = "치주(잇몸)치료"
+    url = "/periodontic/"
+    weight = 50
+  [[menu.main]]
+    name = "수면치료"
+    url = "/sleep/"
+    weight = 60
+  [[menu.main]]
+    name = "치아교정"
+    url = "/orthodontic/"
+    weight = 70
+  [[menu.main]]
+    name = "커뮤니티"
+    url = "/community/"
+    weight = 80
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

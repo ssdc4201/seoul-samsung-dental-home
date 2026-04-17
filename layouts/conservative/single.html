@@ -1,0 +1,37 @@
+{{ define "main" }}
+  {{ $hero := "/images/conservative/inlay_onlay.jpg" }}
+  <section class="hero1" style="background-image:url('{{ $hero }}')">
+    <div class="hero1-overlay"></div>
+    <div class="container hero1-inner">
+      <div class="hero1-kicker">{{ .Site.Params.clinic_name }}</div>
+      <h1 class="hero1-title">{{ .Title }}</h1>
+      {{ with .Params.hero_tagline }}<p class="hero1-tagline">{{ . }}</p>{{ end }}
+    </div>
+  </section>
+
+  {{ partial "section-tabs.html" . }}
+
+  <section class="section">
+    <div class="container">
+      {{ if .Params.section_heading }}
+        <h2 class="section-title">{{ .Params.section_heading }}</h2>
+      {{ end }}
+
+      {{ with .Params.features }}
+        <div class="feature-list">
+          {{ range . }}
+            <div class="feature-item">
+              <div class="feature-no">{{ .no }}</div>
+              <div class="feature-text">{{ .text }}</div>
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      <article class="prose">
+        {{ .Content }}
+      </article>
+    </div>
+  </section>
+{{ end }}
+

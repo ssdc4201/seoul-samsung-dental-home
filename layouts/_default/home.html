@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+    <source src="{{ .Params.hero_video | default "/images/mesh_tooth.mp4" }}" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-kicker">{{ .Site.Params.clinic_name }}</div>
+    <h1 class="hero-title">{{ .Title }}</h1>
+    {{ with .Params.hero_tagline }}<p class="hero-tagline">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+
+<!-- 기존 hero/배너는 그대로 두고 -->
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

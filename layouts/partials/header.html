@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <div class="brand-title">{{ .Site.Params.clinic_name }}</div>
+      <div class="brand-sub">DENTAL CLINIC</div>
+    </a>
+
+    <nav class="nav">
+      {{ $current := .RelPermalink }}
+      {{ range .Site.Menus.main }}
+        {{ $active := or (eq $current .URL) (and (ne .URL "/") (hasPrefix $current .URL)) }}
+        <a class="nav-item {{ if $active }}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>
+

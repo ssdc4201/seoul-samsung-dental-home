@@ -1,0 +1,28 @@
+<aside class="quickmenu" aria-label="Quick menu">
+  {{ with .Site.Params.naver_booking_url }}
+  <a class="qm-item" href="{{ . }}" target="_blank" rel="noopener">
+    <div class="qm-badge">N</div>
+    <div class="qm-text">네이버 예약</div>
+  </a>
+  {{ end }}
+
+  {{ with .Site.Params.naver_blog_url }}
+  <a class="qm-item" href="{{ . }}" target="_blank" rel="noopener">
+    <div class="qm-icon">blog</div>
+    <div class="qm-text">블로그</div>
+  </a>
+  {{ end }}
+
+  {{ with .Site.Params.phone }}
+  <a class="qm-item" href="tel:{{ . }}">
+    <div class="qm-icon">☎</div>
+    <div class="qm-text">전화문의</div>
+  </a>
+  {{ end }}
+
+  <button class="qm-item" type="button" data-scroll-top>
+    <div class="qm-icon">↑</div>
+    <div class="qm-text">TOP</div>
+  </button>
+</aside>
+
