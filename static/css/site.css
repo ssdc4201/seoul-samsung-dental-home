@@ -139,7 +139,7 @@ a{text-decoration:none;color:inherit}
   .hero-tagline{font-size:18px}
   .quickmenu{right:10px;top:140px}
   .qm-item{width:76px;border-radius:16px}
-
+}
 
 /* Simple cards for home */
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:900px;margin:0 auto}
@@ -149,7 +149,6 @@ a{text-decoration:none;color:inherit}
 .card-desc{margin-top:6px;color:var(--muted);font-size:13px}
 @media (max-width: 900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media (max-width: 640px){.grid{grid-template-columns:1fr;}}
-}
 
 /* 페이지 전환 효과 */
 html {
