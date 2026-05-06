@@ -1,9 +1,9 @@
-# Seoul Samsung Dental Website
+# Seoul Samsung Dental Redesign Prototype
 
-Clinic homepage project for Seoul Samsung Dental Clinic.
-Static-site based, self-hosted.
+Independent local prototype for Seoul Samsung Dental Clinic homepage redesign.
 
-## TODO
-- Decide static site generator (Hugo)
-- Define page structure
-- Draft initial contents
+Run locally:
+
+```bash
+python3 -m http.server 1314
+```
