@@ -37,7 +37,7 @@
 
   <main id="top">
     <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" data-playback-rate="0.55">
         <source src="assets/mesh_tooth.mp4" type="video/mp4" />
       </video>
       <div class="hero-shade"></div>
@@ -351,5 +351,21 @@
       <p>전화 031-615-4201 · 팩스 031-615-4202</p>
     </div>
   </footer>
+  <script>
+    (() => {
+      const heroVideo = document.querySelector('.hero-video');
+      const rate = Number(heroVideo?.dataset.playbackRate || 1);
+      if (!heroVideo || !Number.isFinite(rate) || rate <= 0) return;
+
+      const applyPlaybackRate = () => {
+        heroVideo.defaultPlaybackRate = rate;
+        heroVideo.playbackRate = rate;
+      };
+
+      applyPlaybackRate();
+      heroVideo.addEventListener('loadedmetadata', applyPlaybackRate, { once: true });
+      heroVideo.addEventListener('play', applyPlaybackRate);
+    })();
+  </script>
 </body>
 </html>
