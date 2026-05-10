@@ -14,7 +14,7 @@
       if (redirectHosts.has(host)) location.replace(`https://${primary}${location.pathname}${location.search}${location.hash}`);
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=video-ui-2" />
+  <link rel="stylesheet" href="styles.css?v=video-ui-qr-1" />
 </head>
 <body>
   <header class="site-header" data-header>
@@ -342,6 +342,21 @@
           <p>진료 가능 시간과 캠퍼스 출입 동선은 내원 전 전화로 확인해 주세요.</p>
           <small>팩스 031-615-4202</small>
         </div>
+      </div>
+    </section>
+
+    <section class="section qr-section" aria-labelledby="homepage-qr-title">
+      <div class="container qr-panel">
+        <div>
+          <p class="section-kicker">Mobile Access</p>
+          <h2 id="homepage-qr-title">모바일에서도 서울삼성치과를 확인하세요</h2>
+          <p>QR코드를 스캔하면 홈페이지로 바로 연결됩니다. 진료 안내, 위치, 전화 문의 정보를 휴대폰에서 편하게 확인하실 수 있습니다.</p>
+          <a class="homepage-url" href="https://seoul-samsung-dental.com">seoul-samsung-dental.com</a>
+        </div>
+        <a class="qr-card" href="https://seoul-samsung-dental.com" aria-label="서울삼성치과의원 홈페이지 바로가기">
+          <img src="assets/homepage-qr.svg" alt="서울삼성치과의원 홈페이지 QR코드" loading="lazy" />
+          <span>홈페이지 바로가기</span>
+        </a>
       </div>
     </section>
   </main>
