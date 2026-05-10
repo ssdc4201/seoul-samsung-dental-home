@@ -145,7 +145,12 @@
           </article>
 
           <article class="detail-row reverse">
-            <div class="detail-media implant"></div>
+            <div class="detail-media prf-video-card">
+              <button class="video-thumb" type="button" data-video-open aria-label="PRF 자가혈 골이식 설명 영상 보기">
+                <img src="assets/prf-membrane-cover.png" alt="PRF 멤브레인으로 골이식 부위를 부드럽게 덮어 보호하는 장면" loading="lazy" />
+                <span class="play-badge" aria-hidden="true">영상 보기</span>
+              </button>
+            </div>
             <div class="detail-copy">
               <span>Implant & PRF</span>
               <h3>PRF를 활용한 골이식과 임플란트 수술</h3>
@@ -351,6 +356,18 @@
       <p>전화 031-615-4201 · 팩스 031-615-4202</p>
     </div>
   </footer>
+
+  <div class="video-modal" data-video-modal aria-hidden="true" role="dialog" aria-modal="true" aria-label="PRF 자가혈 골이식 설명 영상">
+    <div class="video-modal__backdrop" data-video-close></div>
+    <div class="video-modal__panel" role="document">
+      <button class="video-modal__close" type="button" data-video-close aria-label="영상 닫기">×</button>
+      <video class="prf-video" controls playsinline preload="metadata" poster="assets/prf-membrane-cover.png">
+        <source src="assets/prf-autologous-bone-graft.webm" type="video/webm" />
+        브라우저가 영상 재생을 지원하지 않습니다.
+      </video>
+    </div>
+  </div>
+
   <script>
     (() => {
       const heroVideo = document.querySelector('.hero-video');
@@ -365,6 +382,36 @@
       applyPlaybackRate();
       heroVideo.addEventListener('loadedmetadata', applyPlaybackRate, { once: true });
       heroVideo.addEventListener('play', applyPlaybackRate);
+    })();
+
+    (() => {
+      const modal = document.querySelector('[data-video-modal]');
+      const openButton = document.querySelector('[data-video-open]');
+      const closeButtons = document.querySelectorAll('[data-video-close]');
+      const video = modal?.querySelector('video');
+      const closeButton = modal?.querySelector('.video-modal__close');
+      if (!modal || !openButton || !video) return;
+
+      const openModal = () => {
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        closeButton?.focus();
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      };
+
+      const closeModal = () => {
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        video.pause();
+        openButton.focus();
+      };
+
+      openButton.addEventListener('click', openModal);
+      closeButtons.forEach((button) => button.addEventListener('click', closeModal));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+      });
     })();
   </script>
 </body>
