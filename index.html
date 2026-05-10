@@ -14,7 +14,7 @@
       if (redirectHosts.has(host)) location.replace(`https://${primary}${location.pathname}${location.search}${location.hash}`);
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=prf-ui-compact" />
+  <link rel="stylesheet" href="styles.css?v=video-ui-2" />
 </head>
 <body>
   <header class="site-header" data-header>
@@ -127,7 +127,12 @@
 
         <div class="detail-stack">
           <article class="detail-row">
-            <div class="detail-media prosthetic"></div>
+            <div class="detail-media oneday-video-card">
+              <button class="video-thumb" type="button" data-video-open="oneday-video-modal" aria-label="원데이 보철 설명 영상 보기">
+                <img src="assets/oneday-milling-machine.png" alt="원데이 보철 제작을 위해 세라믹 보철물을 밀링하는 장면" loading="lazy" />
+                <span class="play-badge is-left" aria-hidden="true">영상 보기</span>
+              </button>
+            </div>
             <div class="detail-copy">
               <span>One-day Prosthetics</span>
               <h3>원데이 보철: 치료 시간을 예측하기 쉽게</h3>
@@ -146,7 +151,7 @@
 
           <article class="detail-row reverse">
             <div class="detail-media prf-video-card">
-              <button class="video-thumb" type="button" data-video-open aria-label="PRF 자가혈 골이식 설명 영상 보기">
+              <button class="video-thumb" type="button" data-video-open="prf-video-modal" aria-label="PRF 자가혈 골이식 설명 영상 보기">
                 <img src="assets/prf-membrane-cover.png" alt="PRF 멤브레인으로 골이식 부위를 부드럽게 덮어 보호하는 장면" loading="lazy" />
                 <span class="play-badge" aria-hidden="true">영상 보기</span>
               </button>
@@ -357,11 +362,23 @@
     </div>
   </footer>
 
-  <div class="video-modal" data-video-modal aria-hidden="true" role="dialog" aria-modal="true" aria-label="PRF 자가혈 골이식 설명 영상">
+  <div class="video-modal" id="oneday-video-modal" data-video-modal aria-hidden="true" role="dialog" aria-modal="true" aria-label="원데이 보철 설명 영상">
     <div class="video-modal__backdrop" data-video-close></div>
     <div class="video-modal__panel" role="document">
       <button class="video-modal__close" type="button" data-video-close aria-label="영상 닫기">×</button>
-      <video class="prf-video" controls playsinline preload="metadata" poster="assets/prf-membrane-cover.png">
+      <video class="treatment-video" controls playsinline preload="metadata" poster="assets/oneday-milling-machine.png">
+        <source src="assets/oneday-prosthetics.mp4" type="video/mp4" />
+        <source src="assets/oneday-prosthetics.webm" type="video/webm" />
+        브라우저가 영상 재생을 지원하지 않습니다.
+      </video>
+    </div>
+  </div>
+
+  <div class="video-modal" id="prf-video-modal" data-video-modal aria-hidden="true" role="dialog" aria-modal="true" aria-label="PRF 자가혈 골이식 설명 영상">
+    <div class="video-modal__backdrop" data-video-close></div>
+    <div class="video-modal__panel" role="document">
+      <button class="video-modal__close" type="button" data-video-close aria-label="영상 닫기">×</button>
+      <video class="treatment-video" controls playsinline preload="metadata" poster="assets/prf-membrane-cover.png">
         <source src="assets/prf-autologous-bone-graft.mp4" type="video/mp4" />
         <source src="assets/prf-autologous-bone-graft.webm" type="video/webm" />
         브라우저가 영상 재생을 지원하지 않습니다.
@@ -386,14 +403,29 @@
     })();
 
     (() => {
-      const modal = document.querySelector('[data-video-modal]');
-      const openButton = document.querySelector('[data-video-open]');
-      const closeButtons = document.querySelectorAll('[data-video-close]');
-      const video = modal?.querySelector('video');
-      const closeButton = modal?.querySelector('.video-modal__close');
-      if (!modal || !openButton || !video) return;
+      const modals = Array.from(document.querySelectorAll('[data-video-modal]'));
+      const openButtons = Array.from(document.querySelectorAll('[data-video-open]'));
+      let activeOpenButton = null;
 
-      const openModal = () => {
+      const closeModal = (modal) => {
+        const video = modal?.querySelector('video');
+        if (!modal || modal.getAttribute('aria-hidden') === 'true') return;
+        modal.setAttribute('aria-hidden', 'true');
+        video?.pause();
+        if (!modals.some((item) => item.getAttribute('aria-hidden') === 'false')) {
+          document.body.classList.remove('modal-open');
+        }
+        activeOpenButton?.focus();
+      };
+
+      const openModal = (button) => {
+        const modal = document.getElementById(button.dataset.videoOpen);
+        const video = modal?.querySelector('video');
+        const closeButton = modal?.querySelector('.video-modal__close');
+        if (!modal || !video) return;
+
+        modals.forEach(closeModal);
+        activeOpenButton = button;
         modal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
         closeButton?.focus();
@@ -401,17 +433,14 @@
         video.play().catch(() => {});
       };
 
-      const closeModal = () => {
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('modal-open');
-        video.pause();
-        openButton.focus();
-      };
-
-      openButton.addEventListener('click', openModal);
-      closeButtons.forEach((button) => button.addEventListener('click', closeModal));
+      openButtons.forEach((button) => button.addEventListener('click', () => openModal(button)));
+      modals.forEach((modal) => {
+        modal.querySelectorAll('[data-video-close]').forEach((button) => {
+          button.addEventListener('click', () => closeModal(modal));
+        });
+      });
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+        if (event.key === 'Escape') modals.forEach(closeModal);
       });
     })();
   </script>
