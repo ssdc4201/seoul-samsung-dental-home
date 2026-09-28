@@ -14,7 +14,7 @@
       if (redirectHosts.has(host)) location.replace(`https://${primary}${location.pathname}${location.search}${location.hash}`);
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=focus-care-images-2" />
+  <link rel="stylesheet" href="styles.css?v=clinic-refresh-1" />
 </head>
 <body>
   <header class="site-header" data-header>
@@ -27,7 +27,7 @@
     </a>
     <nav class="main-nav" aria-label="주요 메뉴">
       <a href="#focus">중점진료</a>
-      <a href="#details">상세안내</a>
+      <a href="#clinic">병원 둘러보기</a>
       <a href="#care">진료방식</a>
       <a href="#equipment">장비</a>
       <a href="#info">오시는 길</a>
@@ -36,41 +36,58 @@
   </header>
 
   <main id="top">
-    <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" data-playback-rate="0.55">
-        <source src="assets/mesh_tooth.mp4" type="video/mp4" />
-      </video>
-      <div class="hero-shade"></div>
-      <div class="hero-content">
-        <p class="eyebrow">삼성전자 평택캠퍼스 사무3동 4층</p>
-        <h1>바쁜 직장인을 위한<br />정밀하고 효율적인 치과&nbsp;진료</h1>
-        <p class="hero-copy">
-          필요한 치료를 정확히 설명하고, 내원 횟수와 회복까지 고려해
-          직장인의 일정에 맞는 치료 계획을 세웁니다.
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="tel:0316154201">전화 문의</a>
-          <a class="btn ghost" href="#info">오시는 길</a>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-layout container">
+        <div class="hero-content">
+          <p class="eyebrow"><span></span> 삼성전자 평택캠퍼스 · 사무3동 4층</p>
+          <h1 id="hero-title">바쁜 일상 속에서도,<br />진료는 <em>세심하게.</em></h1>
+          <p class="hero-copy">충분한 설명과 정밀한 진단으로 시작합니다.<br />내원 횟수와 회복까지, 직장인의 일정에 맞춘 치과 진료.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://m.booking.naver.com/booking/13/bizes/1656208" target="_blank" rel="noopener">네이버 예약 <span aria-hidden="true">↗</span></a>
+            <a class="btn ghost" href="#clinic">병원 둘러보기 <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-contact"><span>대표원장 이동훈</span><a href="tel:0316154201">문의 031-615-4201</a></div>
         </div>
-        <dl class="hero-facts" aria-label="병원 기본 정보">
-          <div><dt>대표원장</dt><dd>이동훈</dd></div>
-          <div><dt>전화</dt><dd>031-615-4201</dd></div>
-          <div><dt>팩스</dt><dd>031-615-4202</dd></div>
-        </dl>
+        <div class="hero-visual">
+          <div class="visual-heading"><span>PRECISION IN EVERY DETAIL</span><span aria-hidden="true">＋</span></div>
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/clinic/tooth-poster.jpg" data-playback-rate="0.55" aria-label="회전하는 치아 격자 모형">
+            <source src="assets/mesh_tooth.mp4" type="video/mp4" />
+          </video>
+          <div class="visual-caption"><div><small>DIGITAL DENTISTRY</small><p>정밀함에서 시작하는 진료</p></div><button class="motion-toggle" type="button" aria-label="치아 영상 일시정지">일시정지 Ⅱ</button></div>
+        </div>
       </div>
+      <a class="hero-scroll" href="#clinic">서울삼성치과를 만나보세요 <span aria-hidden="true">↓</span></a>
     </section>
 
-    <section class="section intro">
-      <div class="container intro-grid">
-        <div>
-          <p class="section-kicker">Our Direction</p>
-          <h2>치료 항목을 나열하기보다,<br />환자에게 필요한 해결책을 먼저 보여줍니다.</h2>
+    <section id="clinic" class="section clinic-section" aria-labelledby="clinic-title">
+      <div class="container">
+        <div class="clinic-heading">
+          <div><p class="section-kicker">OUR SPACE</p><h2 id="clinic-title">처음 오시기 전,<br />먼저 둘러보세요.</h2></div>
+          <div class="clinic-intro"><p>충분한 설명으로 시작하는, 내 일정에 맞춘 치과 진료.<br />서울삼성치과의 진료 공간을 소개합니다.</p><span>사진을 누르면 더 크게 보실 수 있습니다. <span aria-hidden="true">↗</span></span></div>
         </div>
-        <p>
-          서울삼성치과의원은 삼성전자 및 협력사 직장인 환자분들이
-          치료 시간을 예측하고, 치료 후 관리까지 이어갈 수 있도록
-          <strong>효율적인 치료 과정과 장기적인 유지관리</strong>를 함께 생각합니다.
-        </p>
+        <div class="clinic-gallery">
+          <a class="clinic-photo" href="assets/clinic/clinic-treatment-1440.webp" data-gallery data-title="진료실 전경">
+            <img src="assets/clinic/clinic-treatment-640.webp" srcset="assets/clinic/clinic-treatment-640.webp 640w, assets/clinic/clinic-treatment-1440.webp 1440w" sizes="(max-width: 700px) 85vw, 720px" width="2048" height="1365" alt="서울삼성치과 진료실 전경" loading="lazy" decoding="async" />
+            <span class="clinic-photo-label"><strong>진료실 전경</strong><span>밝고 탁 트인 진료 공간</span><b aria-hidden="true">↗</b></span>
+          </a>
+          <a class="clinic-photo" href="assets/clinic/clinic-consultation-1440.webp" data-gallery data-title="상담실">
+            <img src="assets/clinic/clinic-consultation-640.webp" srcset="assets/clinic/clinic-consultation-640.webp 640w, assets/clinic/clinic-consultation-1440.webp 1440w" sizes="(max-width: 700px) 85vw, 360px" width="2048" height="1365" alt="서울삼성치과 상담실" loading="lazy" decoding="async" />
+            <span class="clinic-photo-label"><strong>상담실</strong><span>차분하게 이야기를 나누는 공간</span><b aria-hidden="true">↗</b></span>
+          </a>
+          <a class="clinic-photo" href="assets/clinic/clinic-imaging-1440.webp" data-gallery data-title="촬영실">
+            <img src="assets/clinic/clinic-imaging-640.webp" srcset="assets/clinic/clinic-imaging-640.webp 640w, assets/clinic/clinic-imaging-1440.webp 1440w" sizes="(max-width: 700px) 85vw, 360px" width="2048" height="1365" alt="서울삼성치과 촬영실" loading="lazy" decoding="async" />
+            <span class="clinic-photo-label"><strong>촬영실</strong><span>진료 전 검사를 위한 공간</span><b aria-hidden="true">↗</b></span>
+          </a>
+          <a class="clinic-photo" href="assets/clinic/clinic-detail-1440.webp" data-gallery data-title="진료 공간">
+            <img src="assets/clinic/clinic-detail-640.webp" srcset="assets/clinic/clinic-detail-640.webp 640w, assets/clinic/clinic-detail-1440.webp 1440w" sizes="(max-width: 700px) 85vw, 360px" width="2048" height="1365" alt="서울삼성치과 진료 공간" loading="lazy" decoding="async" />
+            <span class="clinic-photo-label"><strong>진료 공간</strong><span>진료실을 조금 더 가까이</span><b aria-hidden="true">↗</b></span>
+          </a>
+          <a class="clinic-photo" href="assets/clinic/clinic-hall-1440.webp" data-gallery data-title="병원 내부">
+            <img src="assets/clinic/clinic-hall-640.webp" srcset="assets/clinic/clinic-hall-640.webp 640w, assets/clinic/clinic-hall-1440.webp 1440w" sizes="(max-width: 700px) 85vw, 360px" width="2048" height="1365" alt="서울삼성치과 병원 내부" loading="lazy" decoding="async" />
+            <span class="clinic-photo-label"><strong>병원 내부</strong><span>방문 전 미리 만나는 서울삼성치과</span><b aria-hidden="true">↗</b></span>
+          </a>
+        </div>
+        <div class="clinic-footnote"><span>SEOUL SAMSUNG DENTAL CLINIC</span><a href="#info">오시는 길 확인하기 ↗</a></div>
       </div>
     </section>
 
@@ -114,6 +131,26 @@
             <p>교정 후 보철·심미 결과까지 고려해 치료 계획을 세웁니다.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="doctor" class="section doctor-section">
+      <div class="container doctor-card">
+        <div>
+          <p class="section-kicker">Dentist</p>
+          <h2>대표원장 이동훈</h2>
+          <p>
+            치과 치료가 조금이라도 덜 불안하고, 더 편안한 경험이 될 수 있도록
+            충분한 설명과 정밀한 진단을 바탕으로 진료합니다.
+          </p>
+        </div>
+        <ul>
+          <li>서울대학교 졸업</li>
+          <li>서울대학교 치의학대학원 졸업 (DDS)</li>
+          <li>서울대학교 석사</li>
+          <li>미국 Brown Univ. 석사</li>
+          <li>미국 Brown Univ. 박사 수료</li>
+        </ul>
       </div>
     </section>
 
@@ -291,26 +328,6 @@
       </div>
     </section>
 
-    <section id="doctor" class="section doctor-section">
-      <div class="container doctor-card">
-        <div>
-          <p class="section-kicker">Dentist</p>
-          <h2>대표원장 이동훈</h2>
-          <p>
-            치과 치료가 조금이라도 덜 불안하고, 더 편안한 경험이 될 수 있도록
-            충분한 설명과 정밀한 진단을 바탕으로 진료합니다.
-          </p>
-        </div>
-        <ul>
-          <li>서울대학교 졸업</li>
-          <li>서울대학교 치의학대학원 졸업 (DDS)</li>
-          <li>서울대학교 석사</li>
-          <li>미국 Brown Univ. 석사</li>
-          <li>미국 Brown Univ. 박사 수료</li>
-        </ul>
-      </div>
-    </section>
-
     <section class="section visit-section">
       <div class="container visit-panel">
         <div>
@@ -369,16 +386,10 @@
     </section>
   </main>
 
-  <aside class="quick-actions" aria-label="빠른 메뉴">
-    <a href="tel:0316154201">전화</a>
-    <a href="#info">길찾기</a>
-    <a class="quick-qr quick-kakao" href="https://pf.kakao.com/_ZxjNxlX/chat" target="_blank" rel="noopener" aria-label="서울삼성치과의원 카카오채널 바로가기">
-      <img src="assets/kakao-channel-qr-card.svg" alt="카카오채널 QR" loading="lazy" />
-    </a>
-    <a class="quick-qr quick-naver" href="https://m.booking.naver.com/booking/13/bizes/1656208" target="_blank" rel="noopener" aria-label="서울삼성치과의원 네이버예약 바로가기">
-      <img src="assets/naver-booking-qr-card-large-title.svg" alt="네이버예약 QR" loading="lazy" />
-    </a>
-    <a href="#top">TOP</a>
+  <aside class="quick-actions" aria-label="빠른 예약 및 문의">
+    <a href="tel:0316154201">전화 문의</a>
+    <a class="quick-naver" href="https://m.booking.naver.com/booking/13/bizes/1656208" target="_blank" rel="noopener">네이버 예약</a>
+    <a class="quick-kakao" href="https://pf.kakao.com/_ZxjNxlX/chat" target="_blank" rel="noopener">카카오 상담</a>
   </aside>
 
   <footer class="site-footer">
@@ -415,6 +426,12 @@
     </div>
   </div>
 
+  <dialog class="photo-dialog" aria-labelledby="photo-caption">
+    <button class="photo-close" type="button" aria-label="사진 닫기">×</button>
+    <figure><img src="assets/clinic/clinic-treatment-1440.webp" alt="" /><figcaption id="photo-caption"></figcaption></figure>
+    <div class="photo-controls"><button type="button" data-photo-prev aria-label="이전 사진">←</button><span class="photo-count" aria-live="polite"></span><button type="button" data-photo-next aria-label="다음 사진">→</button></div>
+  </dialog>
+  <script src="assets/clinic.js" defer></script>
   <script>
     (() => {
       const heroVideo = document.querySelector('.hero-video');
